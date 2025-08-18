@@ -1,0 +1,43 @@
+@import url('https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f8fafc;
+}
+.sidebar {
+    min-width: 14rem;
+    max-width: 14rem;
+    transition: transform 0.3s;
+}
+@media (max-width: 1024px) {
+    .sidebar {
+        transform: translateX(-100%);
+        position: fixed;
+        z-index: 30;
+    }
+    .sidebar.open {
+        transform: translateX(0);
+    }
+}
+.main-content {
+    margin-left: 14rem;
+    transition: margin 0.3s;
+}
+@media (max-width: 1024px) {
+    .main-content {
+        margin-left: 0;
+    }
+}
+
+/* Button Classes */
+.pc-btn-primary {
+    @apply inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200 shadow-sm;
+}
+
+.pc-btn-secondary {
+    @apply inline-flex items-center px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium rounded-lg transition-colors duration-200 shadow-sm;
+}
+
+.pc-btn-danger {
+    @apply inline-flex items-center px-4 py-2 bg-red-600 hover:bg-red-700 text-white font-medium rounded-lg transition-colors duration-200 shadow-sm;
+} 

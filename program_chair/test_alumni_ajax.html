@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Alumni AJAX</title>
+</head>
+<body>
+    <h1>Test Alumni AJAX</h1>
+    
+    <div>
+        <label>Search:</label>
+        <input type="text" id="searchInput" placeholder="Search...">
+    </div>
+    
+    <div>
+        <label>School Year:</label>
+        <select id="school_year">
+            <option value="">All Years</option>
+            <option value="2023">2023-2024</option>
+            <option value="2022">2022-2023</option>
+        </select>
+    </div>
+    
+    <div>
+        <label>Entries:</label>
+        <select id="entriesPerPage">
+            <option value="5">5</option>
+            <option value="10" selected>10</option>
+            <option value="20">20</option>
+        </select>
+    </div>
+    
+    <button onclick="testAjax()">Test AJAX</button>
+    
+    <div id="result" style="margin-top: 20px; padding: 10px; border: 1px solid #ccc;">
+        <p>Results will appear here...</p>
+    </div>
+
+    <script>
+        function testAjax() {
+            console.log('Testing AJAX...');
+            
+            const formData = new FormData();
+            formData.append('search', document.getElementById('searchInput').value);
+            formData.append('school_year', document.getElementById('school_year').value);
+            formData.append('entries', document.getElementById('entriesPerPage').value);
+            formData.append('page', '1');
+            
+            fetch('simple_test_ajax.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                console.log('Response status:', response.status);
+                return response.text();
+            })
+            .then(data => {
+                console.log('Raw response:', data);
+                document.getElementById('result').innerHTML = '<pre>' + data + '</pre>';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('result').innerHTML = '<p style="color: red;">Error: ' + error.message + '</p>';
+            });
+        }
+        
+        // Add event listeners
+        document.getElementById('searchInput').addEventListener('input', function() {
+            console.log('Search input changed:', this.value);
+            setTimeout(() => testAjax(), 500);
+        });
+        
+        document.getElementById('school_year').addEventListener('change', function() {
+            console.log('School year changed:', this.value);
+            testAjax();
+        });
+        
+        document.getElementById('entriesPerPage').addEventListener('change', function() {
+            console.log('Entries changed:', this.value);
+            testAjax();
+        });
+    </script>
+</body>
+</html> 
