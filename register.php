@@ -650,7 +650,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($error_message) && empty($succ
     </style>
 </head>
 <body>
-    <a href="landing_page.php" class="home-button">
+    <a href="index.php" class="home-button">
         <i data-lucide="home"></i>
         Home
     </a>
