@@ -60,6 +60,4 @@ try {
         'message' => 'Server error: ' . $e->getMessage()
     ]);
 }
-//modifying this php file
-$test = "test";
 ?> 
