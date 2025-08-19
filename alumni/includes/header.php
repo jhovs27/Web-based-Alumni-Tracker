@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+require_once '../admin/config/database.php';
+
 // Debug: Check session
 error_log("=== ALUMNI HEADER DEBUG ===");
 error_log("Session data: " . print_r($_SESSION, true));
@@ -8,7 +10,7 @@ error_log("is_alumni: " . (isset($_SESSION['is_alumni']) ? $_SESSION['is_alumni'
 error_log("alumni_id: " . (isset($_SESSION['alumni_id']) ? $_SESSION['alumni_id'] : 'NOT SET'));
 
 // Check if user is logged in as alumni
-if (!isset($_SESSION['is_alumni']) || !$_SESSION['is_alumni'] || !isset($_SESSION['alumni_id'])) {
+if (!isset($_SESSION['is_alumni']) || !isset($_SESSION['alumni_id'])) {
     error_log("Session check failed - redirecting to login");
     error_log("is_alumni: " . (isset($_SESSION['is_alumni']) ? $_SESSION['is_alumni'] : 'NOT SET'));
     error_log("alumni_id: " . (isset($_SESSION['alumni_id']) ? $_SESSION['alumni_id'] : 'NOT SET'));
@@ -25,12 +27,10 @@ if (isset($_SESSION['login_time']) && (time() - $_SESSION['login_time']) > $logi
     exit;
 }
 
-require_once '../admin/config/database.php';
-
 // Fetch alumni data from alumni table
 $alumni_id = $_SESSION['alumni_id'];
 try {
-    $stmt = $conn->prepare("SELECT * FROM alumni WHERE id = ?");
+    $stmt = $conn->prepare("SELECT * FROM alumni WHERE alumni_id = ?");
     $stmt->execute([$alumni_id]);
     $alumni = $stmt->fetch(PDO::FETCH_ASSOC);
     
