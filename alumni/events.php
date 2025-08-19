@@ -1,14 +1,6 @@
 <?php
-// Start session if not already started
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
-// Check if user is logged in
-if (!isset($_SESSION['alumni_id'])) {
-    header("Location: ../login.php");
-    exit();
-}
+// Header
+include 'includes/header.php';
 
 // Database connection
 require_once '../admin/config/database.php';
@@ -107,7 +99,7 @@ foreach ($events as $event) {
     </script>
 </head>
 <body class="bg-gradient-to-br from-blue-50 via-white to-indigo-50 min-h-screen">
-    <?php include 'includes/header.php'; ?>
+
     <?php include 'includes/navbar.php'; ?>
     <?php include 'includes/sidebar.php'; ?>
 

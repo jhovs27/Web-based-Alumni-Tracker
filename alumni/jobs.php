@@ -1,15 +1,6 @@
 <?php
-// Start session if not already started
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
-// Check if user is logged in
-if (!isset($_SESSION['alumni_id'])) {
-    header("Location: ../login.php");
-    exit();
-}
-
+// Header
+include 'includes/header.php';
 // Database connection
 require_once '../admin/config/database.php';
 
@@ -125,7 +116,6 @@ $total_jobs = count($jobs);
     </script>
 </head>
 <body class="bg-gray-50">
-    <?php include 'includes/header.php'; ?>
     <?php include 'includes/navbar.php'; ?>
     <?php include 'includes/sidebar.php'; ?>
 
