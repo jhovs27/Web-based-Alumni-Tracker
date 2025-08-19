@@ -123,6 +123,12 @@ try {
                 width: calc(100% - 16rem);
             }
         }
+        
+        @media (max-width: 438px) {
+            .nav-header{
+                display: none;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-50"> 
