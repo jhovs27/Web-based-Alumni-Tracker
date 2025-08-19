@@ -750,4 +750,91 @@ foreach ($events as $event) {
         }
     </style>
 </body>
+<script>
+    document.getElementById('dashboard').classList.add('border-l-4','border-blue-500');
+    
+    // dashboard click event
+    document.querySelector("#dashboard").addEventListener("click", () => {
+        document.getElementById('dashboard').classList.add('border-l-4','border-blue-500');
+        
+        document.getElementById('events').classList.remove('border-l-4','border-blue-500');
+        document.getElementById('job-board').classList.remove('border-l-4','border-blue-500');
+        document.getElementById('alumni-network').classList.remove('border-l-4','border-blue-500');
+        document.getElementById('surveys').classList.remove('border-l-4','border-blue-500');
+        document.getElementById('payments').classList.remove('border-l-4','border-blue-500');
+        document.getElementById('my-profile').classList.remove('border-l-4','border-blue-500');
+    });
+
+    // events click event
+    document.querySelector("#events").addEventListener("click", () => {
+        document.getElementById('events').classList.add('border-l-4','border-blue-500');
+        
+        document.getElementById('dashboard').classList.remove('border-l-4','border-blue-500');
+        document.getElementById('job-board').classList.remove('border-l-4','border-blue-500');
+        document.getElementById('alumni-network').classList.remove('border-l-4','border-blue-500');
+        document.getElementById('surveys').classList.remove('border-l-4','border-blue-500');
+        document.getElementById('payments').classList.remove('border-l-4','border-blue-500');
+        document.getElementById('my-profile').classList.remove('border-l-4','border-blue-500');
+    });
+
+    // job board click event
+    document.querySelector("#job-board").addEventListener("click", () => {
+        document.getElementById('job-board').classList.add('border-l-4','border-blue-500');
+        
+        document.getElementById('events').classList.remove('border-l-4','border-blue-500');
+        document.getElementById('dashboard').classList.remove('border-l-4','border-blue-500');
+        document.getElementById('alumni-network').classList.remove('border-l-4','border-blue-500');
+        document.getElementById('surveys').classList.remove('border-l-4','border-blue-500');
+        document.getElementById('payments').classList.remove('border-l-4','border-blue-500');
+        document.getElementById('my-profile').classList.remove('border-l-4','border-blue-500');
+    });
+    
+    // alumni network click event
+    document.querySelector("#alumni-network").addEventListener("click", () => {
+        document.getElementById('alumni-network').classList.add('border-l-4','border-blue-500');
+        
+        document.getElementById('dashboard').classList.remove('border-l-4','border-blue-500');
+        document.getElementById('job-board').classList.remove('border-l-4','border-blue-500');
+        document.getElementById('events').classList.remove('border-l-4','border-blue-500');
+        document.getElementById('surveys').classList.remove('border-l-4','border-blue-500');
+        document.getElementById('payments').classList.remove('border-l-4','border-blue-500');
+        document.getElementById('my-profile').classList.remove('border-l-4','border-blue-500');
+    });
+
+    // surveys click event
+    document.querySelector("#surveys").addEventListener("click", () => {
+        document.getElementById('surveys').classList.add('border-l-4','border-blue-500');
+        
+        document.getElementById('dashboard').classList.remove('border-l-4','border-blue-500');
+        document.getElementById('job-board').classList.remove('border-l-4','border-blue-500');
+        document.getElementById('alumni-network').classList.remove('border-l-4','border-blue-500');
+        document.getElementById('events').classList.remove('border-l-4','border-blue-500');
+        document.getElementById('payments').classList.remove('border-l-4','border-blue-500');
+        document.getElementById('my-profile').classList.remove('border-l-4','border-blue-500');
+    });
+
+    // job board click event
+    document.querySelector("#payments").addEventListener("click", () => {
+        document.getElementById('payments').classList.add('border-l-4','border-blue-500');
+        
+        document.getElementById('events').classList.remove('border-l-4','border-blue-500');
+        document.getElementById('dashboard').classList.remove('border-l-4','border-blue-500');
+        document.getElementById('alumni-network').classList.remove('border-l-4','border-blue-500');
+        document.getElementById('surveys').classList.remove('border-l-4','border-blue-500');
+        document.getElementById('job-board').classList.remove('border-l-4','border-blue-500');
+        document.getElementById('my-profile').classList.remove('border-l-4','border-blue-500');
+    });
+    
+    // alumni network click event
+    document.querySelector("#my-profile").addEventListener("click", () => {
+        document.getElementById('my-profile').classList.add('border-l-4','border-blue-500');
+        
+        document.getElementById('dashboard').classList.remove('border-l-4','border-blue-500');
+        document.getElementById('job-board').classList.remove('border-l-4','border-blue-500');
+        document.getElementById('events').classList.remove('border-l-4','border-blue-500');
+        document.getElementById('surveys').classList.remove('border-l-4','border-blue-500');
+        document.getElementById('payments').classList.remove('border-l-4','border-blue-500');
+        document.getElementById('alumni-network').classList.remove('border-l-4','border-blue-500');
+    });
+</script>
 </html> 
