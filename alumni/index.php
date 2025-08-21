@@ -4,7 +4,9 @@ $page_title = "Dashboard";
 
 // Include header (which handles session and database connection)
 include 'includes/header.php';
+?>
 
+<?php
 // Fetch upcoming events with better formatting
 $recent_events = [];
 try {

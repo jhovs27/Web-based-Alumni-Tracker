@@ -9,7 +9,7 @@
                 </button>
                 <div class="flex items-center ml-4">
                     <img src="../images/slsu_logo.png" alt="SLSU Logo" class="logo-circle h-8 w-8 mr-3 rounded-full object-cover aspect-square flex-shrink-0">
-                    <div>
+                    <div class="nav-header">
                         <h1 class="text-lg font-semibold text-gray-800">SLSU-HC Alumni Portal</h1>
                         <p class="text-xs text-gray-500">Welcome back, <?php echo htmlspecialchars($alumni['first_name'] . ' ' . $alumni['last_name']); ?></p>
                     </div>

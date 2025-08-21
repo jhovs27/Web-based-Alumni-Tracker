@@ -93,11 +93,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             session_unset();
             session_regenerate_id(true);
             
-        $_SESSION['is_alumni'] = true;
-        $_SESSION['alumni_id'] = $alumni['id'];
+            $_SESSION['is_alumni'] = true;
+            $_SESSION['alumni_id'] = $alumni['alumni_id'];
             $_SESSION['alumni_alumni_id'] = $alumni_id; // Use the alumni_id from input
             $_SESSION['alumni_name'] = $alumni['first_name'] . ' ' . $alumni['last_name'];
-        $_SESSION['alumni_email'] = $alumni['email'];
+            $_SESSION['alumni_email'] = $alumni['email'];
             $_SESSION['alumni_student_no'] = $alumni['student_no'];
             $_SESSION['alumni_course'] = $alumni['course'];
             $_SESSION['alumni_employment_status'] = $alumni['employment_status'];
@@ -115,8 +115,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
             
             // Redirect to alumni dashboard
-        header('Location: alumni/index.php');
-        exit();
+            header('Location: alumni/index.php');
+            exit();
             
         } catch (PDOException $e) {
             error_log("Database error during alumni login: " . $e->getMessage());

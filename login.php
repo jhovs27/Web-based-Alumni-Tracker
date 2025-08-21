@@ -290,7 +290,7 @@ session_start();
     <div class="fixed inset-0 z-0" style="background: linear-gradient(135deg, rgba(15,23,42,0.95) 0%, rgba(30,64,175,0.8) 50%, rgba(102,126,234,0.6) 100%), url('images/hc.jpg'); background-size: cover; background-position: center; background-attachment: fixed; animation: gradientShift 10s ease-in-out infinite alternate;"></div>
     
     <!-- Enhanced Back to Home Button -->
-    <a href="landing_page.php" class="fixed top-4 left-4 z-50 group" data-aos="fade-down">
+    <a href="index.php" class="fixed top-4 left-4 z-50 group" data-aos="fade-down">
         <div class="bg-white bg-opacity-20 backdrop-blur-lg text-white hover:text-blue-200 hover:bg-opacity-30 px-6 py-3 rounded-2xl shadow-xl border border-white border-opacity-20 transition-all duration-300 hover:scale-105 flex items-center gap-3 font-medium">
             <i class="fas fa-home text-lg group-hover:animate-bounce"></i>
         <span class="hidden sm:inline">Back to Home</span>
