@@ -130,94 +130,118 @@ if (!empty($profile_photo) && file_exists('../admin/uploads/profile_photos/' . $
 </nav>
 
 <script>
-// Mobile sidebar toggle
-const toggleSidebarBtn = document.getElementById('toggleSidebar');
-const sidebar = document.getElementById('sidebar');
-let overlay = document.getElementById('sidebarOverlay');
+document.addEventListener('DOMContentLoaded', function() {
+    // Mobile sidebar toggle
+    const toggleSidebarBtn = document.getElementById('toggleSidebar');
+    const sidebar = document.getElementById('sidebar');
+    let overlay = document.getElementById('sidebarOverlay');
 
-// If overlay doesn't exist, create it
-if (!overlay) {
-    overlay = document.createElement('div');
-    overlay.id = 'sidebarOverlay';
-    overlay.className = 'fixed inset-0 bg-black/50 backdrop-blur-sm z-40 hidden lg:hidden transition-opacity duration-300';
-    document.body.appendChild(overlay);
-}
+    // If overlay doesn't exist, create it
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.id = 'sidebarOverlay';
+        overlay.className = 'fixed inset-0 bg-black/50 backdrop-blur-sm z-40 hidden lg:hidden transition-opacity duration-300';
+        document.body.appendChild(overlay);
+    }
 
-function openSidebar() {
-    sidebar.classList.remove('-translate-x-full');
-    overlay.classList.remove('hidden');
-}
+    function openSidebar() {
+        if (!sidebar) return;
+        sidebar.classList.remove('-translate-x-full');
+        if (overlay) overlay.classList.remove('hidden');
+    }
 
-function closeSidebar() {
-    sidebar.classList.add('-translate-x-full');
-    overlay.classList.add('hidden');
-}
+    function closeSidebar() {
+        if (!sidebar) return;
+        sidebar.classList.add('-translate-x-full');
+        if (overlay) overlay.classList.add('hidden');
+    }
 
-if (toggleSidebarBtn && sidebar && overlay) {
-    toggleSidebarBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        if (sidebar.classList.contains('-translate-x-full')) {
-            openSidebar();
-        } else {
-            closeSidebar();
-        }
-    });
-
-    overlay.addEventListener('click', function() {
-        closeSidebar();
-    });
-}
-
-// Profile dropdown toggle
-const profileDropdown = document.getElementById('profileDropdown');
-const profileMenu = document.getElementById('profileMenu');
-
-if (profileDropdown && profileMenu) {
-    profileDropdown.addEventListener('click', function(e) {
-        e.stopPropagation();
-        profileMenu.classList.toggle('hidden');
-    });
-
-    document.addEventListener('click', function(e) {
-        if (!profileMenu.contains(e.target) && !profileDropdown.contains(e.target)) {
-            profileMenu.classList.add('hidden');
-        }
-    });
-}
-
-// Fit to Screen (Fullscreen) Feature
-const fitScreenBtn = document.getElementById('fitScreenBtn');
-if (fitScreenBtn) {
-    fitScreenBtn.addEventListener('click', function() {
-        if (!document.fullscreenElement) {
-            document.documentElement.requestFullscreen();
-        } else {
-            document.exitFullscreen();
-        }
-    });
-}
-
-// Session refresh mechanism
-function refreshSession() {
-    fetch('session_refresh.php', {
-        method: 'POST',
-        credentials: 'same-origin'
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            if (data.profile_photo_path) {
-                const navbarPhoto = document.getElementById('navbar-profile-photo');
-                if (navbarPhoto && navbarPhoto.src !== data.profile_photo_path) {
-                    navbarPhoto.src = data.profile_photo_path;
-                }
+    if (toggleSidebarBtn) {
+        toggleSidebarBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (sidebar && sidebar.classList.contains('-translate-x-full')) {
+                openSidebar();
+            } else {
+                closeSidebar();
             }
-        } else if (data.redirect) {
-            window.location.href = data.redirect;
-        }
-    })
-    .catch(error => {});
-}
+        });
+    }
 
-setInterval(refreshSession, 300000); // Refresh every 5 minutes
-</script> 
+    if (overlay) {
+        overlay.addEventListener('click', function() {
+            closeSidebar();
+        });
+    }
+
+    // Close mobile menu when clicking on links (mobile only)
+    document.querySelectorAll('#sidebar a').forEach(link => {
+        link.addEventListener('click', function() {
+            if (window.innerWidth < 1024) { // lg breakpoint
+                closeSidebar();
+            }
+        });
+    });
+
+    // Ensure correct state on resize
+    window.addEventListener('resize', function() {
+        if (window.innerWidth >= 1024) {
+            // Desktop: keep sidebar visible, hide overlay
+            if (sidebar) sidebar.classList.remove('-translate-x-full');
+            if (overlay) overlay.classList.add('hidden');
+        } else {
+            // Mobile: start hidden
+            if (sidebar) sidebar.classList.add('-translate-x-full');
+        }
+    });
+
+    // Profile dropdown toggle
+    const profileDropdown = document.getElementById('profileDropdown');
+    const profileMenu = document.getElementById('profileMenu');
+    if (profileDropdown && profileMenu) {
+        profileDropdown.addEventListener('click', function(e) {
+            e.stopPropagation();
+            profileMenu.classList.toggle('hidden');
+        });
+        document.addEventListener('click', function(e) {
+            if (!profileMenu.contains(e.target) && !profileDropdown.contains(e.target)) {
+                profileMenu.classList.add('hidden');
+            }
+        });
+    }
+
+    // Fit to Screen (Fullscreen) Feature
+    const fitScreenBtn = document.getElementById('fitScreenBtn');
+    if (fitScreenBtn) {
+        fitScreenBtn.addEventListener('click', function() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else {
+                document.exitFullscreen();
+            }
+        });
+    }
+
+    // Session refresh mechanism
+    function refreshSession() {
+        fetch('session_refresh.php', {
+            method: 'POST',
+            credentials: 'same-origin'
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                if (data.profile_photo_path) {
+                    const navbarPhoto = document.getElementById('navbar-profile-photo');
+                    if (navbarPhoto && navbarPhoto.src !== data.profile_photo_path) {
+                        navbarPhoto.src = data.profile_photo_path;
+                    }
+                }
+            } else if (data.redirect) {
+                window.location.href = data.redirect;
+            }
+        })
+        .catch(() => {});
+    }
+    setInterval(refreshSession, 300000); // Refresh every 5 minutes
+});
+</script>
