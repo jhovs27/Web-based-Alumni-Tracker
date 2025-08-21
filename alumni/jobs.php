@@ -120,7 +120,7 @@ $total_jobs = count($jobs);
     <?php include 'includes/sidebar.php'; ?>
 
     <!-- Main Content -->
-    <main class="main-content md:ml-64 pt-16 flex-1">
+    <main class="main-content lg:ml-72 pt-16 min-h-screen">
         <div class="p-6">
             <!-- Welcome Section -->
             <div class="mb-8">

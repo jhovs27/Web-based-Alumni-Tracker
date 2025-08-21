@@ -117,10 +117,13 @@ try {
             margin-top: auto;
         }
         
-        @media (min-width: 768px) {
+        @media (min-width: 1024px) {
+            .main-content {
+                margin-left: 18rem; /* 288px = 18rem, matches new sidebar width */
+            }
             footer {
-                margin-left: 16rem; /* 256px = 16rem, matches sidebar width */
-                width: calc(100% - 16rem);
+                margin-left: 18rem; /* 288px = 18rem, matches new sidebar width */
+                width: calc(100% - 18rem);
             }
         }
         
