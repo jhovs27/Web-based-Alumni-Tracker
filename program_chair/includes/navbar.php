@@ -9,7 +9,7 @@ if (!empty($profile_photo) && strpos($profile_photo, 'ui-avatars.com') === false
 ?>
 
 <!-- Modern Responsive Navbar -->
-<nav class="bg-white/95 backdrop-blur-md shadow-lg fixed w-full top-0 z-50 border-b border-gray-200/50 transition-all duration-300 lg:ml-72 lg:w-[calc(100%-18rem)]" id="navbar">
+<nav class="bg-white/95 backdrop-blur-md shadow-lg fixed w-full top-0 z-50 border-b border-gray-200/50 transition-all duration-300 lg:ml-64 lg:w-[calc(100%-16rem)]" id="navbar">
     <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
             <!-- Left Section: Mobile Menu + Logo -->

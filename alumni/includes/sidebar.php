@@ -195,7 +195,7 @@
             </div>
         </nav>
     </div>
-</aside>
+</aside> 
 
 <!-- Mobile Overlay -->
 <div id="sidebarOverlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-30 hidden lg:hidden transition-opacity duration-300"></div>
