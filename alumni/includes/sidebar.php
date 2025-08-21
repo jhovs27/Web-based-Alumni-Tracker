@@ -143,6 +143,56 @@
                     <div class="ml-auto w-2 h-2 bg-red-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </a>
             </div>
+
+            <!-- Sidebar Mini Profile (Alumni) -->
+            <?php
+                $alumni_first_name = isset($alumni['first_name']) ? trim($alumni['first_name']) : '';
+                $alumni_last_name = isset($alumni['last_name']) ? trim($alumni['last_name']) : '';
+                $alumni_full_name = trim($alumni_first_name . ' ' . $alumni_last_name);
+                $alumni_year = isset($alumni['year_graduated']) && !empty($alumni['year_graduated']) ? preg_replace('/[^0-9]/', '', (string)$alumni['year_graduated']) : '';
+                $profile_photo = $alumni['profile_photo_path'] ?? '';
+                if (!empty($profile_photo) && file_exists('../admin/uploads/profile_photos/' . $profile_photo)) {
+                    $alumni_photo_url = '../admin/uploads/profile_photos/' . htmlspecialchars($profile_photo);
+                } else {
+                    $alumni_photo_url = 'https://ui-avatars.com/api/?name=' . urlencode($alumni_full_name ?: 'Alumni') . '&background=6366F1&color=fff';
+                }
+            ?>
+            <div class="sticky bottom-0 left-0 z-10 px-2 pb-4 pt-2 bg-gradient-to-t from-slate-900/95 via-slate-900/70 to-transparent">
+                <div class="flex items-center space-x-3 p-3 bg-slate-800/60 backdrop-blur rounded-2xl shadow-lg border border-slate-700/60">
+                    <div class="relative">
+                        <span class="inline-flex p-0.5 rounded-full bg-gradient-to-tr from-indigo-400 via-fuchsia-400 to-emerald-400">
+                            <img src="<?php echo $alumni_photo_url; ?>" alt="Profile" class="h-12 w-12 rounded-full object-cover border-2 border-slate-900">
+                        </span>
+                        <span class="absolute -bottom-1 -right-1 w-4 h-4 bg-emerald-400 border-2 border-slate-900 rounded-full" title="Online"></span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-sm font-semibold text-slate-100 truncate"><?php echo htmlspecialchars($alumni_full_name ?: 'Alumni'); ?></p>
+                        <div class="flex items-center space-x-2">
+                            <p class="text-xs text-indigo-300 font-medium">Alumni</p>
+                            <?php if (!empty($alumni_year)): ?>
+                                <span class="text-[10px] px-2 py-0.5 rounded-full bg-indigo-500/15 text-indigo-300 border border-indigo-400/20">Since <?php echo htmlspecialchars($alumni_year); ?></span>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    <div class="flex flex-col space-y-1">
+                        <a href="profile.php" class="p-2 text-slate-300 hover:text-indigo-400 hover:bg-indigo-50/10 rounded-lg transition-colors duration-200" title="Profile">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                            </svg>
+                        </a>
+                        <a href="settings.php" class="p-2 text-slate-300 hover:text-indigo-400 hover:bg-indigo-50/10 rounded-lg transition-colors duration-200" title="Settings">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c-.94 1.543.826 3.31 2.37 2.37.996.608 2.296.07 2.572-1.065z" />
+                            </svg>
+                        </a>
+                        <a href="../logout.php" class="p-2 text-slate-300 hover:text-rose-400 hover:bg-rose-50/10 rounded-lg transition-colors duration-200" title="Logout">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </nav>
     </div>
 </aside>
