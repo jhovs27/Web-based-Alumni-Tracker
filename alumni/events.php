@@ -106,82 +106,7 @@ foreach ($events as $event) {
     <!-- Main Content -->
     <main class="main-content lg:ml-72 pt-16 min-h-screen">
         <div class="p-6">
-            <!-- Enhanced Welcome Section -->
-            <div class="mb-8 relative">
-                <div class="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl opacity-10"></div>
-                <div class="relative bg-white rounded-2xl p-8 shadow-xl border border-blue-100">
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <h1 class="text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-3">
-                                Alumni Events
-                            </h1>
-                            <p class="text-gray-600 text-lg">Stay connected with your alma mater through our exciting alumni events and networking opportunities.</p>
-                            <?php if (!empty($events)): ?>
-                                <p class="text-green-600 text-sm mt-2">
-                                    <i class="fas fa-check-circle mr-1"></i>
-                                    Successfully loaded <?php echo count($events); ?> event(s) from database
-                                </p>
-                            <?php endif; ?>
-                        </div>
-                        <div class="hidden lg:block">
-                            <div class="w-24 h-24 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center shadow-lg">
-                                <i class="fas fa-calendar-star text-white text-3xl"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Enhanced Stats Cards -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                <div class="group bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl shadow-xl p-6 text-white transform hover:scale-105 transition-all duration-300 hover:shadow-2xl">
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <p class="text-blue-100 text-sm font-medium mb-1">Total Events</p>
-                            <p class="text-3xl font-bold"><?php echo $total_events; ?></p>
-                        </div>
-                        <div class="p-3 rounded-full bg-white bg-opacity-20 group-hover:bg-opacity-30 transition-all duration-300">
-                            <i class="fas fa-calendar-check text-2xl"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="group bg-gradient-to-br from-green-500 to-green-600 rounded-2xl shadow-xl p-6 text-white transform hover:scale-105 transition-all duration-300 hover:shadow-2xl">
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <p class="text-green-100 text-sm font-medium mb-1">Upcoming</p>
-                            <p class="text-3xl font-bold"><?php echo $upcoming_events; ?></p>
-                        </div>
-                        <div class="p-3 rounded-full bg-white bg-opacity-20 group-hover:bg-opacity-30 transition-all duration-300">
-                            <i class="fas fa-calendar-alt text-2xl"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="group bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl shadow-xl p-6 text-white transform hover:scale-105 transition-all duration-300 hover:shadow-2xl">
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <p class="text-purple-100 text-sm font-medium mb-1">Online Events</p>
-                            <p class="text-3xl font-bold"><?php echo $online_events; ?></p>
-                        </div>
-                        <div class="p-3 rounded-full bg-white bg-opacity-20 group-hover:bg-opacity-30 transition-all duration-300">
-                            <i class="fas fa-video text-2xl"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="group bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl shadow-xl p-6 text-white transform hover:scale-105 transition-all duration-300 hover:shadow-2xl">
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <p class="text-orange-100 text-sm font-medium mb-1">In-Person</p>
-                            <p class="text-3xl font-bold"><?php echo $in_person_events; ?></p>
-                        </div>
-                        <div class="p-3 rounded-full bg-white bg-opacity-20 group-hover:bg-opacity-30 transition-all duration-300">
-                            <i class="fas fa-map-marker-alt text-2xl"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
 
             <!-- Enhanced Search and Filters -->
             <div class="bg-white rounded-2xl shadow-xl mb-8 border border-gray-100 overflow-hidden">
@@ -471,9 +396,6 @@ foreach ($events as $event) {
                 if (data.timestamp > lastUpdateTime) {
                     updateEventsDisplay(data);
                     lastUpdateTime = data.timestamp;
-                    
-                    // Show notification for new events
-                    showUpdateNotification(data.events.length);
                 }
             } catch (error) {
                 console.error('Error fetching events:', error);
@@ -660,33 +582,7 @@ foreach ($events as $event) {
             }
         }
 
-        // Function to show update notification
-        function showUpdateNotification(eventCount) {
-            // Create notification element
-            const notification = document.createElement('div');
-            notification.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 transform transition-all duration-300 translate-x-full';
-            notification.innerHTML = `
-                <div class="flex items-center">
-                    <i class="fas fa-sync-alt mr-2"></i>
-                    <span>${eventCount} event(s) updated!</span>
-                </div>
-            `;
-            
-            document.body.appendChild(notification);
-            
-            // Animate in
-            setTimeout(() => {
-                notification.classList.remove('translate-x-full');
-            }, 100);
-            
-            // Remove after 3 seconds
-            setTimeout(() => {
-                notification.classList.add('translate-x-full');
-                setTimeout(() => {
-                    document.body.removeChild(notification);
-                }, 300);
-            }, 3000);
-        }
+        // Removed update notification popup
 
         // Start real-time updates when page loads
         document.addEventListener('DOMContentLoaded', function() {
