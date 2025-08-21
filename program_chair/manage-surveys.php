@@ -335,5 +335,6 @@ if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
         // Initial listeners
         reapplyListeners();
     </script>
+    <?php include 'includes/footer.php'; ?>
 </body>
 </html>
