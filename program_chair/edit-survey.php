@@ -117,7 +117,7 @@ $questions_json = $survey['questions'] ?? '[]';
     <?php include 'includes/navbar.php'; ?>
 
     <!-- Main Content -->
-    <main class="lg:ml-72 pt-16 min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+    <main class="lg:ml-64 pt-16 min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
         <div class="p-4 sm:p-6 lg:p-8">
             <!-- Breadcrumb Navigation -->
             <div class="mb-6">

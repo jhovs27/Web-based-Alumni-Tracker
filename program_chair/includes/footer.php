@@ -1,4 +1,4 @@
-<footer class="bg-gradient-to-r from-slate-900 via-blue-900 to-indigo-900 text-white mt-auto lg:ml-72">
+<footer class="bg-gradient-to-r from-slate-900 via-blue-900 to-indigo-900 text-white mt-auto lg:ml-64 lg:w-[calc(100%-16rem)]">
     <!-- Main Footer Content -->
     <div class="px-4 sm:px-6 lg:px-8 py-12">
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">

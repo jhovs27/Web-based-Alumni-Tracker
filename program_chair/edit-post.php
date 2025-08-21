@@ -141,7 +141,7 @@ try {
     <?php include 'includes/breadcrumb.php'; ?>
 
     <!-- Main Content -->
-    <main class="lg:ml-72 pt-16 min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+    <main class="lg:ml-64 pt-16 min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
         <div class="p-4 sm:p-6 lg:p-8">
             <!-- Page Header -->
             <div class="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-blue-100 p-6 mb-8">

@@ -200,7 +200,7 @@ if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
     <?php include 'includes/breadcrumb.php'; ?>
 
     <!-- Main Content -->
-    <main class="lg:ml-72 pt-16 min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+    <main class="lg:ml-64 pt-16 min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
         <div class="p-4 sm:p-6 lg:p-8">
             <!-- Breadcrumb Navigation (always render) -->
             <div class="mb-6">
