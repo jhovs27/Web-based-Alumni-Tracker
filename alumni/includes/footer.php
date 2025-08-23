@@ -4,7 +4,7 @@
         <div class="animated-gradient-bar h-1 w-full rounded-full"></div>
     </div>
 
-    <!-- Main Footer Content -->
+        <!-- Main Footer Content -->
     <div class="px-4 sm:px-6 lg:px-8 py-10">
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
             <!-- About Alumni -->
@@ -45,8 +45,8 @@
                     <li><a href="network.php" class="flex items-center text-sm text-gray-600 hover:text-indigo-700 transition-colors duration-150"><i class="fas fa-users w-5 text-indigo-500 mr-2"></i>Alumni Network</a></li>
                     <li><a href="surveys.php" class="flex items-center text-sm text-gray-600 hover:text-indigo-700 transition-colors duration-150"><i class="fas fa-poll w-5 text-indigo-500 mr-2"></i>Surveys</a></li>
                     <li><a href="profile.php" class="flex items-center text-sm text-gray-600 hover:text-indigo-700 transition-colors duration-150"><i class="fas fa-user w-5 text-indigo-500 mr-2"></i>My Profile</a></li>
-                </ul>
-            </div>
+                    </ul>
+                </div>
 
             <!-- Community at a Glance -->
             <div class="space-y-4">
@@ -97,9 +97,9 @@
                     <div class="rounded-xl bg-white border border-indigo-100 p-4 text-center shadow-sm">
                         <div class="text-xl font-bold text-amber-600"><?php echo date('Y') - 1999; ?>+</div>
                         <p class="text-xs text-gray-500 mt-1">Years Strong</p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
             <!-- Contact -->
             <div class="space-y-4">
@@ -127,10 +127,10 @@
                         <i class="fas fa-globe text-indigo-600"></i>
                         <a href="https://www.slsu.edu.ph" target="_blank" class="text-gray-700 hover:text-indigo-700 transition-colors duration-150">www.slsu.edu.ph</a>
                     </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
     <!-- Bottom Bar -->
     <div class="border-t border-indigo-100 bg-white/60">
@@ -182,8 +182,8 @@ document.addEventListener('DOMContentLoaded', function() {
 @keyframes moveGradient {
 	0% { background-position: 0% 50%; }
 	100% { background-position: 300% 50%; }
-}
+    }
 </style>
 
-<?php include __DIR__ . '/scripts.php'; ?>
+<?php include __DIR__ . '/scripts.php'; ?> 
 <!-- na changed -->

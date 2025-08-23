@@ -48,14 +48,14 @@
                             <span class="text-sm">Employment Status</span>
                         </a>
                     </div>
-                </div>
+                                </div>
 
                 <a href="chair-reports.php" class="flex items-center px-4 py-3 text-gray-700 rounded-xl hover:bg-blue-50 hover:text-blue-700 transition-all duration-200 group">
                     <div class="flex items-center justify-center w-8 h-8 rounded-lg bg-gray-100 group-hover:bg-blue-100 transition-colors duration-200">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path d="M9 19v-6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2zm0 0V9a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v10m-6 0a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V5"/>
-                        </svg>
-                    </div>
+                                    </svg>
+                                </div>
                     <span class="ml-3 font-medium">Reports</span>
                 </a>
 
@@ -81,8 +81,8 @@
                             <div class="w-2 h-2 bg-gray-400 rounded-full mr-3"></div>
                             <span class="text-sm">Manage Posts</span>
                         </a>
-                    </div>
-                </div>
+                                </div>
+                                </div>
 
                 <!-- Notifications (Admin style) -->
                 <div class="space-y-1">
@@ -91,7 +91,7 @@
                             <div class="flex items-center justify-center w-8 h-8 rounded-lg bg-gray-100 group-hover:bg-blue-100 transition-colors duration-200">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path d="M15 17h5l-5 5V17z"/>
-                                </svg>
+                                    </svg>
                             </div>
                             <span class="ml-3 font-medium">Notifications</span>
                         </div>
@@ -106,8 +106,8 @@
                             <div class="w-2 h-2 bg-gray-400 rounded-full mr-3"></div>
                             <span class="text-sm">Email</span>
                         </a>
-                    </div>
-                </div>
+                                </div>
+                                </div>
 
                 <!-- Surveys (Admin style) -->
                 <div class="space-y-1">
@@ -116,7 +116,7 @@
                             <div class="flex items-center justify-center w-8 h-8 rounded-lg bg-gray-100 group-hover:bg-blue-100 transition-colors duration-200">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path d="M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0-3 3V6a3 3 0 1 0 3-3h12a3 3 0 1 0-3 3"/>
-                                </svg>
+                                    </svg>
                             </div>
                             <span class="ml-3 font-medium">Surveys</span>
                         </div>
@@ -131,17 +131,17 @@
                             <div class="w-2 h-2 bg-gray-400 rounded-full mr-3"></div>
                             <span class="text-sm">Manage Surveys</span>
                         </a>
-                    </div>
-                </div>
+                                </div>
+                                </div>
 
                 <a href="chair_profile.php" class="flex items-center px-4 py-3 text-gray-700 rounded-xl hover:bg-blue-50 hover:text-blue-700 transition-all duration-200 group">
                     <div class="flex items-center justify-center w-8 h-8 rounded-lg bg-gray-100 group-hover:bg-blue-100 transition-colors duration-200">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path d="M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM12 14a7 7 0 0 0-7 7h14a0 0 0 0-7-7"/>
-                        </svg>
-                    </div>
+                                </svg>
+                            </div>
                     <span class="ml-3 font-medium">Profile</span>
-                </a>
+                    </a>
             </ul>
 
             <!-- Logout Section (Admin style) -->
@@ -150,7 +150,7 @@
                     <div class="flex items-center justify-center w-8 h-8 rounded-lg bg-gray-100 group-hover:bg-blue-100 transition-colors duration-200">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h7a3 3 0 0 1 3 3v1"/>
-                        </svg>
+                            </svg>
                     </div>
                     <span class="ml-3 font-medium">Logout</span>
                 </a>

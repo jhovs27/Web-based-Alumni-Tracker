@@ -50,7 +50,7 @@ if (!empty($profile_photo) && file_exists('../admin/uploads/profile_photos/' . $
                     </svg>
                     <span class="absolute -top-1 -right-1 h-5 w-5 bg-red-500 text-white rounded-full text-xs flex items-center justify-center font-medium animate-pulse">3</span>
                 </button>
-
+                
                 <!-- Profile Dropdown -->
                 <div class="relative">
                     <button id="profileDropdown" class="flex items-center space-x-2 p-2 rounded-lg hover:bg-gray-100 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -61,12 +61,12 @@ if (!empty($profile_photo) && file_exists('../admin/uploads/profile_photos/' . $
                         <div class="hidden sm:block text-left">
                             <span class="block text-sm font-medium text-gray-900"><?php echo htmlspecialchars($alumni_name); ?></span>
                             <span class="block text-xs text-gray-500">Alumni</span>
-                        </div>
+                            </div>
                         <svg class="w-4 h-4 text-gray-400 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                         </svg>
                     </button>
-
+                    
                     <!-- Dropdown Menu -->
                     <div id="profileMenu" class="hidden absolute right-0 mt-2 w-64 bg-white rounded-xl shadow-xl py-2 z-50 border border-gray-200 backdrop-blur-sm">
                         <!-- User Info Header -->
@@ -127,7 +127,7 @@ if (!empty($profile_photo) && file_exists('../admin/uploads/profile_photos/' . $
             </div>
         </div>
     </div>
-</nav>
+</nav> 
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {

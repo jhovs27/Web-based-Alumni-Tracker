@@ -118,7 +118,13 @@ $breadcrumbs = [
                         </h1>
                         <p class="mt-2 text-gray-600">Track and manage alumni employment information</p>
                     </div>
-                    <div class="mt-4 sm:mt-0 flex justify-end w-full sm:w-auto">
+                    <div class="mt-4 sm:mt-0 flex justify-end w-full sm:w-auto gap-3">
+                        <button onclick="exportToExcel()" class="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg transition-colors duration-200 shadow-sm">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                            Export
+                        </button>
                         <button onclick="window.print()" class="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200 shadow-sm">
                             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2V7a2 2 0 012-2h16a2 2 0 012 2v9a2 2 0 01-2 2h-2m-6 0v2m0 0h6m-6 0H6"></path>
@@ -395,6 +401,23 @@ $breadcrumbs = [
     </main>
 
     <script>
+    function exportToExcel() {
+        // Get current filter values
+        const searchValue = document.getElementById('searchInput') ? document.getElementById('searchInput').value : '';
+        const statusValue = document.getElementById('statusFilter') ? document.getElementById('statusFilter').value : '';
+        const schoolYearValue = document.getElementById('schoolYearFilter') ? document.getElementById('schoolYearFilter').value : '';
+        
+        // Build query string for export
+        const params = new URLSearchParams();
+        if (searchValue) params.append('search', searchValue);
+        if (statusValue) params.append('status', statusValue);
+        if (schoolYearValue) params.append('school_year', schoolYearValue);
+        params.append('export', 'excel');
+        
+        // Redirect to export endpoint
+        window.location.href = 'export_employment_status.php?' + params.toString();
+    }
+    
     document.addEventListener('DOMContentLoaded', function() {
         const searchInput = document.getElementById('searchInput');
         const statusFilter = document.getElementById('statusFilter');
