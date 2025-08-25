@@ -27,17 +27,4 @@ if ($success) {
 } else {
     echo json_encode(['success' => false, 'error' => 'Delete failed']);
 }
-
-<script>
-setInterval(function() {
-    fetch('session_refresh.php', { credentials: 'same-origin' })
-        .then(response => response.json())
-        .then(data => {
-            if (!data.success && data.redirect) {
-                window.location.href = data.redirect;
-            }
-        })
-        .catch(() => {});
-}, 5 * 60 * 1000); // every 5 minutes
-</script>
-</body> 
+exit;

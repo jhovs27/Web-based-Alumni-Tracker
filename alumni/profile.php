@@ -119,12 +119,15 @@ include 'includes/header.php';
                             </div>
                         </div>
                         <div class="flex items-center gap-3">
-                            <a href="settings.php" class="inline-flex items-center px-4 py-2 rounded-xl bg-indigo-600 text-white text-sm font-medium hover:bg-indigo-700 transition-colors duration-200 shadow">
-                                <i class="fas fa-user-edit mr-2"></i> Edit Profile
-                            </a>
                             <a href="../logout.php" class="inline-flex items-center px-4 py-2 rounded-xl border border-gray-200 text-gray-700 bg-white hover:bg-gray-50 text-sm font-medium transition-colors duration-200">
                                 <i class="fas fa-sign-out-alt mr-2"></i> Logout
                             </a>
+                            <button 
+                                type="button"
+                                id="editProfileBtn"
+                                class="inline-flex items-center px-4 py-2 rounded-xl bg-indigo-600 text-white text-sm font-medium hover:bg-indigo-700 transition-colors duration-200 shadow">
+                                <i class="fas fa-user-edit mr-2"></i> Edit Profile
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -210,5 +213,81 @@ include 'includes/header.php';
 </main>
 
 <?php include 'includes/footer.php'; ?>
+
+<!-- Edit Profile Modal -->
+<div id="editProfileModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black bg-opacity-40">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full mx-4 p-8 relative">
+        <button id="closeEditProfileModal" class="absolute top-4 right-4 text-gray-500 hover:text-blue-600 text-xl">
+            <i class="fas fa-times"></i>
+        </button>
+        <h2 class="text-xl font-bold text-indigo-700 mb-4">Edit Profile</h2>
+        <form id="editProfileForm" method="POST" action="update_profile.php" autocomplete="off">
+            <div class="space-y-4">
+                <input type="hidden" name="alumni_id" value="<?php echo htmlspecialchars($alumni['alumni_id'] ?? ''); ?>">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+                    <input type="text" name="first_name" value="<?php echo htmlspecialchars($alumni_first_name); ?>" required class="w-full px-4 py-2 border rounded-xl focus:ring focus:ring-indigo-200">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+                    <input type="text" name="last_name" value="<?php echo htmlspecialchars($alumni_last_name); ?>" required class="w-full px-4 py-2 border rounded-xl focus:ring focus:ring-indigo-200">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                    <input type="email" name="email" value="<?php echo htmlspecialchars($alumni['email'] ?? ''); ?>" required class="w-full px-4 py-2 border rounded-xl focus:ring focus:ring-indigo-200">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Contact Number</label>
+                    <input type="text" name="contact_number" value="<?php echo htmlspecialchars($alumni['contact_number'] ?? ''); ?>" class="w-full px-4 py-2 border rounded-xl focus:ring focus:ring-indigo-200">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Address</label>
+                    <input type="text" name="address" value="<?php echo htmlspecialchars($alumni['address'] ?? ''); ?>" class="w-full px-4 py-2 border rounded-xl focus:ring focus:ring-indigo-200">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Program</label>
+                    <input type="text" name="program" value="<?php echo htmlspecialchars($program); ?>" class="w-full px-4 py-2 border rounded-xl focus:ring focus:ring-indigo-200">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Year Graduated</label>
+                    <input type="text" name="year_graduated" value="<?php echo htmlspecialchars($year_graduated); ?>" class="w-full px-4 py-2 border rounded-xl focus:ring focus:ring-indigo-200">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Employment Status</label>
+                    <input type="text" name="employment_status" value="<?php echo htmlspecialchars($employment_status); ?>" class="w-full px-4 py-2 border rounded-xl focus:ring focus:ring-indigo-200">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">New Password <span class="text-gray-400">(leave blank to keep current)</span></label>
+                    <input type="password" name="new_password" class="w-full px-4 py-2 border rounded-xl focus:ring focus:ring-indigo-200" autocomplete="new-password">
+                </div>
+            </div>
+            <div class="mt-6 flex justify-end gap-2">
+                <button type="submit" class="px-6 py-2 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 font-semibold transition">Save Changes</button>
+                <button type="button" id="cancelEditProfile" class="px-6 py-2 bg-gray-100 text-gray-700 rounded-xl hover:bg-gray-200 font-semibold transition">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+document.getElementById('editProfileBtn').onclick = function() {
+    document.getElementById('editProfileModal').classList.remove('hidden');
+    document.getElementById('editProfileModal').classList.add('flex');
+};
+document.getElementById('closeEditProfileModal').onclick = function() {
+    document.getElementById('editProfileModal').classList.add('hidden');
+    document.getElementById('editProfileModal').classList.remove('flex');
+};
+document.getElementById('cancelEditProfile').onclick = function() {
+    document.getElementById('editProfileModal').classList.add('hidden');
+    document.getElementById('editProfileModal').classList.remove('flex');
+};
+document.getElementById('editProfileModal').onclick = function(e) {
+    if (e.target === this) {
+        this.classList.add('hidden');
+        this.classList.remove('flex');
+    }
+};
+</script>
 
 

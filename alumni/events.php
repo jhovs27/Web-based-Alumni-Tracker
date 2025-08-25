@@ -222,10 +222,10 @@ foreach ($events as $event) {
                                 $end_time = date('g:i A', strtotime($event['end_datetime']));
                                 ?>
                                 <div class="group bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 <?php echo $is_upcoming ? 'ring-2 ring-blue-100 bg-gradient-to-r from-blue-50 to-white' : 'bg-gray-50'; ?>">
-                                    <div class="flex items-start justify-between">
-                                        <div class="flex-1 mr-8">
-                                            <!-- Enhanced Event Header -->
-                                            <div class="flex items-center justify-between mb-6">
+                                    <div class="flex flex-col md:flex-row items-start justify-between">
+                                        <!-- Left: Event Info -->
+                                        <div class="flex-1 mr-0 md:mr-8">
+                                            <div class="flex items-center justify-between mb-4">
                                                 <div class="flex items-center space-x-3">
                                                     <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold <?php echo $is_upcoming ? 'bg-blue-100 text-blue-800' : 'bg-gray-100 text-gray-800'; ?>">
                                                         <i class="fas fa-tag mr-2"></i>
@@ -247,22 +247,16 @@ foreach ($events as $event) {
                                                     <div class="text-sm font-bold text-gray-900"><?php echo $event_time; ?> - <?php echo $end_time; ?></div>
                                                 </div>
                                             </div>
-
-                                            <!-- Enhanced Event Title -->
-                                            <h2 class="text-2xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors duration-200">
+                                            <h2 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-200">
                                                 <?php echo htmlspecialchars($event['event_title']); ?>
                                             </h2>
-
-                                            <!-- Enhanced Event Description -->
-                                            <p class="text-gray-600 text-base mb-6 line-clamp-3 leading-relaxed">
+                                            <p class="text-gray-600 text-base mb-4 line-clamp-3 leading-relaxed">
                                                 <?php echo htmlspecialchars(substr($event['event_description'], 0, 250)) . (strlen($event['event_description']) > 250 ? '...' : ''); ?>
                                             </p>
-
-                                            <!-- Enhanced Event Details -->
-                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                                                <div class="space-y-4">
-                                                    <div class="flex items-center text-sm text-gray-600 bg-gray-50 p-3 rounded-lg">
-                                                        <i class="fas fa-map-marker-alt mr-3 text-blue-500 w-5"></i>
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                                <div class="space-y-2">
+                                                    <div class="flex items-center text-sm text-gray-600 bg-gray-50 p-2 rounded-lg">
+                                                        <i class="fas fa-map-marker-alt mr-2 text-blue-500 w-5"></i>
                                                         <span class="font-medium">
                                                             <?php if (!empty($event['physical_address'])): ?>
                                                                 <?php echo htmlspecialchars($event['physical_address']); ?>
@@ -275,41 +269,36 @@ foreach ($events as $event) {
                                                             <?php endif; ?>
                                                         </span>
                                                     </div>
-                                                    <div class="flex items-center text-sm text-gray-600 bg-gray-50 p-3 rounded-lg">
-                                                        <i class="fas fa-user mr-3 text-green-500 w-5"></i>
+                                                    <div class="flex items-center text-sm text-gray-600 bg-gray-50 p-2 rounded-lg">
+                                                        <i class="fas fa-user mr-2 text-green-500 w-5"></i>
                                                         <span class="font-medium">Contact: <?php echo htmlspecialchars($event['contact_person']); ?></span>
                                                     </div>
-                                                    <div class="flex items-center text-sm text-gray-600 bg-gray-50 p-3 rounded-lg">
-                                                        <i class="fas fa-envelope mr-3 text-orange-500 w-5"></i>
+                                                    <div class="flex items-center text-sm text-gray-600 bg-gray-50 p-2 rounded-lg">
+                                                        <i class="fas fa-envelope mr-2 text-orange-500 w-5"></i>
                                                         <span class="font-medium"><?php echo htmlspecialchars($event['contact_email']); ?></span>
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <!-- Enhanced Action Buttons -->
-                                            <div class="flex space-x-4">
-                                                <button class="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg">
-                                                    <i class="fas fa-calendar-plus mr-2"></i>Register Now
-                                                </button>
-                                                <button class="px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-xl hover:bg-gray-50 hover:border-blue-300 transition-all duration-200 transform hover:scale-105">
-                                                    <i class="fas fa-bookmark"></i>
-                                                </button>
-                                                <button class="px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-xl hover:bg-gray-50 hover:border-blue-300 transition-all duration-200 transform hover:scale-105">
-                                                    <i class="fas fa-share"></i>
+                                            <!-- Only Share Button -->
+                                            <div class="flex space-x-2 mt-2">
+                                                <button 
+                                                    type="button"
+                                                    class="px-6 py-3 border-2 border-blue-500 text-blue-700 rounded-xl hover:bg-blue-50 hover:border-blue-700 transition-all duration-200 transform hover:scale-105 flex items-center space-x-2 open-event-btn"
+                                                    data-event='<?php echo htmlspecialchars(json_encode($event), ENT_QUOTES, 'UTF-8'); ?>'>
+                                                    <i class="fas fa-eye"></i>
+                                                    <span>Open</span>
                                                 </button>
                                             </div>
                                         </div>
-                                        
-                                        <!-- Enhanced Event Image Section - Right Side -->
-                                        <div class="flex-shrink-0">
+                                        <!-- Right: Event Image & Status -->
+                                        <div class="flex-shrink-0 mt-6 md:mt-0">
                                             <?php if (!empty($event['poster_image'])): ?>
                                                 <div class="relative group">
-                                                    <div class="w-80 h-56 rounded-2xl overflow-hidden shadow-2xl border-4 border-white transform hover:scale-105 transition-all duration-300">
+                                                    <div class="w-72 h-44 rounded-2xl overflow-hidden shadow-2xl border-4 border-white transform hover:scale-105 transition-all duration-300">
                                                         <img src="../admin/<?php echo htmlspecialchars($event['poster_image']); ?>" 
                                                              alt="Event Poster" 
                                                              class="w-full h-full object-cover">
                                                     </div>
-                                                    <!-- Overlay on hover -->
                                                     <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl flex items-end">
                                                         <div class="p-4 text-white">
                                                             <p class="text-sm font-medium">Click to view full image</p>
@@ -317,29 +306,25 @@ foreach ($events as $event) {
                                                     </div>
                                                 </div>
                                             <?php else: ?>
-                                                <div class="w-80 h-56 bg-gradient-to-br from-blue-100 via-indigo-100 to-purple-100 rounded-2xl flex flex-col items-center justify-center shadow-2xl border-4 border-white">
-                                                    <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center mb-4 shadow-lg">
-                                                        <i class="fas fa-calendar-image text-white text-2xl"></i>
+                                                <div class="w-72 h-44 bg-gradient-to-br from-blue-100 via-indigo-100 to-purple-100 rounded-2xl flex flex-col items-center justify-center shadow-2xl border-4 border-white">
+                                                    <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center mb-2 shadow-lg">
+                                                        <i class="fas fa-calendar-image text-white text-xl"></i>
                                                     </div>
                                                     <p class="text-gray-600 font-medium text-center">Event Poster</p>
                                                     <p class="text-gray-500 text-sm text-center">Coming Soon</p>
                                                 </div>
                                             <?php endif; ?>
-                                            
-                                            <!-- Enhanced Event Document Link -->
                                             <?php if (!empty($event['event_document'])): ?>
-                                                <div class="mt-4 text-center">
+                                                <div class="mt-2 text-center">
                                                     <a href="../admin/<?php echo htmlspecialchars($event['event_document']); ?>" 
                                                        target="_blank" 
-                                                       class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-xl hover:from-green-600 hover:to-emerald-700 transition-all duration-200 text-sm font-semibold shadow-lg transform hover:scale-105">
+                                                       class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-xl hover:from-green-600 hover:to-emerald-700 transition-all duration-200 text-sm font-semibold shadow-lg transform hover:scale-105">
                                                         <i class="fas fa-file-pdf mr-2 text-lg"></i>
                                                         View Event Details
                                                     </a>
                                                 </div>
                                             <?php endif; ?>
-                                            
-                                            <!-- Event Status Badge -->
-                                            <div class="mt-4 text-center">
+                                            <div class="mt-2 text-center">
                                                 <?php if ($is_upcoming): ?>
                                                     <div class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-full text-sm font-semibold shadow-lg">
                                                         <i class="fas fa-star mr-2"></i>
@@ -450,10 +435,10 @@ foreach ($events as $event) {
 
                     return `
                         <div class="group bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 ${is_upcoming ? 'ring-2 ring-blue-100 bg-gradient-to-r from-blue-50 to-white' : 'bg-gray-50'}">
-                            <div class="flex items-start justify-between">
-                                <div class="flex-1 mr-8">
-                                    <!-- Enhanced Event Header -->
-                                    <div class="flex items-center justify-between mb-6">
+                            <div class="flex flex-col md:flex-row items-start justify-between">
+                                <!-- Left: Event Info -->
+                                <div class="flex-1 mr-0 md:mr-8">
+                                    <div class="flex items-center justify-between mb-4">
                                         <div class="flex items-center space-x-3">
                                             <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold ${is_upcoming ? 'bg-blue-100 text-blue-800' : 'bg-gray-100 text-gray-800'}">
                                                 <i class="fas fa-tag mr-2"></i>
@@ -475,58 +460,48 @@ foreach ($events as $event) {
                                             <div class="text-sm font-bold text-gray-900">${event_time} - ${end_time}</div>
                                         </div>
                                     </div>
-
-                                    <!-- Enhanced Event Title -->
-                                    <h2 class="text-2xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors duration-200">
+                                    <h2 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-200">
                                         ${event.event_title}
                                     </h2>
-
-                                    <!-- Enhanced Event Description -->
-                                    <p class="text-gray-600 text-base mb-6 line-clamp-3 leading-relaxed">
+                                    <p class="text-gray-600 text-base mb-4 line-clamp-3 leading-relaxed">
                                         ${event.event_description.length > 250 ? event.event_description.substring(0, 250) + '...' : event.event_description}
                                     </p>
-
-                                    <!-- Enhanced Event Details -->
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                                        <div class="space-y-4">
-                                            <div class="flex items-center text-sm text-gray-600 bg-gray-50 p-3 rounded-lg">
-                                                <i class="fas fa-map-marker-alt mr-3 text-blue-500 w-5"></i>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                        <div class="space-y-2">
+                                            <div class="flex items-center text-sm text-gray-600 bg-gray-50 p-2 rounded-lg">
+                                                <i class="fas fa-map-marker-alt mr-2 text-blue-500 w-5"></i>
                                                 <span class="font-medium">
                                                     ${event.physical_address ? event.physical_address : 
                                                       event.online_link ? `<a href="${event.online_link}" target="_blank" class="text-blue-600 hover:text-blue-800 underline">Online Event Link</a>` : 
                                                       'Location TBA'}
                                                 </span>
                                             </div>
-                                            <div class="flex items-center text-sm text-gray-600 bg-gray-50 p-3 rounded-lg">
-                                                <i class="fas fa-user mr-3 text-green-500 w-5"></i>
+                                            <div class="flex items-center text-sm text-gray-600 bg-gray-50 p-2 rounded-lg">
+                                                <i class="fas fa-user mr-2 text-green-500 w-5"></i>
                                                 <span class="font-medium">Contact: ${event.contact_person}</span>
                                             </div>
-                                            <div class="flex items-center text-sm text-gray-600 bg-gray-50 p-3 rounded-lg">
-                                                <i class="fas fa-envelope mr-3 text-orange-500 w-5"></i>
+                                            <div class="flex items-center text-sm text-gray-600 bg-gray-50 p-2 rounded-lg">
+                                                <i class="fas fa-envelope mr-2 text-orange-500 w-5"></i>
                                                 <span class="font-medium">${event.contact_email}</span>
                                             </div>
                                         </div>
                                     </div>
-
-                                    <!-- Enhanced Action Buttons -->
-                                    <div class="flex space-x-4">
-                                        <button class="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg">
-                                            <i class="fas fa-calendar-plus mr-2"></i>Register Now
-                                        </button>
-                                        <button class="px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-xl hover:bg-gray-50 hover:border-blue-300 transition-all duration-200 transform hover:scale-105">
-                                            <i class="fas fa-bookmark"></i>
-                                        </button>
-                                        <button class="px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-xl hover:bg-gray-50 hover:border-blue-300 transition-all duration-200 transform hover:scale-105">
-                                            <i class="fas fa-share"></i>
+                                    <!-- Only Share Button -->
+                                    <div class="flex space-x-2 mt-2">
+                                        <button 
+                                            type="button"
+                                            class="px-6 py-3 border-2 border-blue-500 text-blue-700 rounded-xl hover:bg-blue-50 hover:border-blue-700 transition-all duration-200 transform hover:scale-105 flex items-center space-x-2 open-event-btn"
+                                            data-event='<?php echo htmlspecialchars(json_encode($event), ENT_QUOTES, 'UTF-8'); ?>'>
+                                            <i class="fas fa-eye"></i>
+                                            <span>Open</span>
                                         </button>
                                     </div>
                                 </div>
-                                
-                                <!-- Enhanced Event Image Section - Right Side -->
-                                <div class="flex-shrink-0">
+                                <!-- Right: Event Image & Status -->
+                                <div class="flex-shrink-0 mt-6 md:mt-0">
                                     ${event.poster_image ? `
                                         <div class="relative group">
-                                            <div class="w-80 h-56 rounded-2xl overflow-hidden shadow-2xl border-4 border-white transform hover:scale-105 transition-all duration-300">
+                                            <div class="w-72 h-44 rounded-2xl overflow-hidden shadow-2xl border-4 border-white transform hover:scale-105 transition-all duration-300">
                                                 <img src="../admin/${event.poster_image}" 
                                                      alt="Event Poster" 
                                                      class="w-full h-full object-cover">
@@ -539,9 +514,9 @@ foreach ($events as $event) {
                                             </div>
                                         </div>
                                     ` : `
-                                        <div class="w-80 h-56 bg-gradient-to-br from-blue-100 via-indigo-100 to-purple-100 rounded-2xl flex flex-col items-center justify-center shadow-2xl border-4 border-white">
-                                            <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center mb-4 shadow-lg">
-                                                <i class="fas fa-calendar-image text-white text-2xl"></i>
+                                        <div class="w-72 h-44 bg-gradient-to-br from-blue-100 via-indigo-100 to-purple-100 rounded-2xl flex flex-col items-center justify-center shadow-2xl border-4 border-white">
+                                            <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center mb-2 shadow-lg">
+                                                <i class="fas fa-calendar-image text-white text-xl"></i>
                                             </div>
                                             <p class="text-gray-600 font-medium text-center">Event Poster</p>
                                             <p class="text-gray-500 text-sm text-center">Coming Soon</p>
@@ -550,10 +525,10 @@ foreach ($events as $event) {
                                     
                                     <!-- Enhanced Event Document Link -->
                                     ${event.event_document ? `
-                                        <div class="mt-4 text-center">
+                                        <div class="mt-2 text-center">
                                             <a href="../admin/${event.event_document}" 
                                                target="_blank" 
-                                               class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-xl hover:from-green-600 hover:to-emerald-700 transition-all duration-200 text-sm font-semibold shadow-lg transform hover:scale-105">
+                                               class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-xl hover:from-green-600 hover:to-emerald-700 transition-all duration-200 text-sm font-semibold shadow-lg transform hover:scale-105">
                                                 <i class="fas fa-file-pdf mr-2 text-lg"></i>
                                                 View Event Details
                                             </a>
@@ -561,7 +536,7 @@ foreach ($events as $event) {
                                     ` : ''}
                                     
                                     <!-- Event Status Badge -->
-                                    <div class="mt-4 text-center">
+                                    <div class="mt-2 text-center">
                                         ${is_upcoming ? `
                                             <div class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-full text-sm font-semibold shadow-lg">
                                                 <i class="fas fa-star mr-2"></i>
@@ -608,6 +583,98 @@ foreach ($events as $event) {
         });
     </script>
 
+    <!-- Modal for Event Details -->
+    <div id="eventModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black bg-opacity-40">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full mx-4 p-8 relative">
+            <button id="closeEventModal" class="absolute top-4 right-4 text-gray-500 hover:text-blue-600 text-xl">
+                <i class="fas fa-times"></i>
+            </button>
+            <div id="eventModalContent">
+                <!-- Event details will be injected here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const modal = document.getElementById('eventModal');
+        const modalContent = document.getElementById('eventModalContent');
+        const closeBtn = document.getElementById('closeEventModal');
+
+        document.querySelectorAll('.open-event-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const event = JSON.parse(this.getAttribute('data-event'));
+                modalContent.innerHTML = `
+                    <div class="mb-6">
+                        <h2 class="text-2xl font-bold text-blue-700 mb-2">${event.event_title}</h2>
+                        <div class="flex flex-wrap items-center gap-2 mb-2">
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold bg-blue-100 text-blue-800">
+                                <i class="fas fa-tag mr-2"></i>${event.event_type}
+                            </span>
+                            ${event.start_datetime ? `<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800">
+                                <i class="fas fa-calendar-alt mr-1"></i>${new Date(event.start_datetime).toLocaleString()}
+                            </span>` : ''}
+                            ${event.physical_address ? `<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-800">
+                                <i class="fas fa-map-marker-alt mr-1"></i>${event.physical_address}
+                            </span>` : ''}
+                            ${event.online_link ? `<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-purple-100 text-purple-800">
+                                <i class="fas fa-video mr-1"></i>Online
+                            </span>` : ''}
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-gray-700 text-base leading-relaxed whitespace-pre-line">${event.event_description}</p>
+                    </div>
+                    <div class="mb-4">
+                        <div class="flex items-center text-sm text-gray-600 mb-2">
+                            <i class="fas fa-user mr-2 text-green-500"></i>
+                            <span class="font-medium">Contact: ${event.contact_person}</span>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-600 mb-2">
+                            <i class="fas fa-envelope mr-2 text-orange-500"></i>
+                            <span class="font-medium">${event.contact_email}</span>
+                        </div>
+                        ${event.online_link ? `<div class="flex items-center text-sm text-gray-600 mb-2">
+                            <i class="fas fa-link mr-2 text-blue-500"></i>
+                            <a href="${event.online_link}" target="_blank" class="text-blue-600 hover:text-blue-800 underline">Join Online Event</a>
+                        </div>` : ''}
+                    </div>
+                    ${event.poster_image ? `
+                        <div class="mb-4">
+                            <img src="../admin/${event.poster_image}" alt="Event Poster" class="w-full rounded-xl shadow-lg">
+                        </div>
+                    ` : ''}
+                    ${event.event_document ? `
+                        <div class="mb-4">
+                            <a href="../admin/${event.event_document}" target="_blank" class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-xl hover:from-green-600 hover:to-emerald-700 transition-all duration-200 text-sm font-semibold shadow-lg transform hover:scale-105">
+                                <i class="fas fa-file-pdf mr-2 text-lg"></i>
+                                View Event Details
+                            </a>
+                        </div>
+                    ` : ''}
+                `;
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            });
+        });
+
+        closeBtn.addEventListener('click', function() {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            modalContent.innerHTML = '';
+        });
+
+        // Close modal when clicking outside the modal content
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                modalContent.innerHTML = '';
+            }
+        });
+    });
+    </script>
+
     <style>
         .line-clamp-3 {
             display: -webkit-box;
@@ -646,4 +713,4 @@ foreach ($events as $event) {
         }
     </style>
 </body>
-</html> 
+</html>
